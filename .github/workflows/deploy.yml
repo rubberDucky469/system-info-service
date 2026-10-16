@@ -10,7 +10,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: rubberducky469/system-info-service
 
 jobs:
 # Job 1: Run Code Linter
