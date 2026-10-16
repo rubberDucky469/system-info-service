@@ -1,5 +1,5 @@
-# Stage 1: Build the Go binary
-FROM golang:1.24-alpine AS builder
+# Stage 1: Build the Go binary with patched Go 1.27 stdlib
+FROM golang:1.27-alpine AS builder
 WORKDIR /src
 COPY go.mod main.go ./
 RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o /bin/app main.go

@@ -24,12 +24,13 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version-file: 'go.mod'
+          go-version: '1.27.x'
 
-      - name: Run golangci-lint
-        uses: golangci/golangci-lint-action@v6
-        with:
-          version: v1.64.8
+      - name: Run go vet and staticcheck
+        run: |
+          go vet ./...
+          go install honnef.co/go/tools/cmd/staticcheck@latest
+          staticcheck ./...
   # Job 2: Build, Scan with Trivy, and Push to GHCR
   build-scan-push:
     name: Build, Scan & Push Image
